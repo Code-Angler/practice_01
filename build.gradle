@@ -20,14 +20,23 @@ repositories {
 // 이것보다 아래 depedency에서 추가하는 방법을 택함
 
 dependencies {
+
+    //spring-web and test
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     //lombok
     implementation 'org.projectlombok:lombok'
     annotationProcessor("org.projectlombok:lombok")
+
+    //jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    //database
+    //h2
+    implementation('com.h2database:h2')
+
+
 
 }
 

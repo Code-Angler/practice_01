@@ -1,6 +1,6 @@
 com/spring/practice_01/web/dto/HelloResponseDto.java
  com.spring.practice_01.web.dto.HelloResponseDto
-com/spring/practice_01/web/HelloController.java
- com.spring.practice_01.web.HelloController
 com/spring/practice_01/Application.java
  com.spring.practice_01.Application
+com/spring/practice_01/web/HelloController.java
+ com.spring.practice_01.web.HelloController
