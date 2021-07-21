@@ -1,4 +1,12 @@
+com/spring/practice_01/domain/posts/PostsTest.java
+ com.spring.practice_01.domain.posts.PostsTest
 com/spring/practice_01/web/HelloControllerTest.java
  com.spring.practice_01.web.HelloControllerTest
+com/spring/practice_01/web/PostsApiControllerTest.java
+ com.spring.practice_01.web.PostsApiControllerTest
+com/spring/practice_01/domain/posts/PostsRepositoryTest.java
+ com.spring.practice_01.domain.posts.PostsRepositoryTest
 com/spring/practice_01/web/dto/HelloResponseDtoTest.java
  com.spring.practice_01.web.dto.HelloResponseDtoTest
+com/spring/practice_01/web/IndexControllerTest.java
+ com.spring.practice_01.web.IndexControllerTest

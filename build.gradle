@@ -36,6 +36,8 @@ dependencies {
     //h2
     implementation('com.h2database:h2')
 
+    // mustache server-template-engine
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
 
 
 }

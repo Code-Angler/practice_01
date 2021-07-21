@@ -1,8 +1,10 @@
 package com.spring.practice_01.domain.posts;
 
+import com.spring.practice_01.domain.BaseTimeEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -16,7 +18,8 @@ import javax.persistence.*;
 //ex) SalesManager.java -> sales_manager table
 //@Setter // Entity 클래스에서는 절대 Setter 메소드를 만들지 않습니다. 대신 해당 필드의 값 변경이 필요하면 명확히 그 목적과 의도를 나타낼 수 있는
 // 세터가 아닌 메소드를 추가해야 합니다. (그러나 세터는 그와 동일하게 기능합니다.)
-public class Posts {
+@DynamicUpdate // 더티체킹에 관한 내용이며, 변경사항
+public class Posts extends BaseTimeEntity {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO) // Id 생성전략에 대한 내용을 다룹니다. https://jojoldu.tistory.com/295
@@ -73,5 +76,11 @@ public class Posts {
         public String toString() {
             return "Posts.PostsBuilder(title=" + this.title + ", content=" + this.content + ", author=" + this.author + ")";
         }
+    }
+
+    //setter (update)
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
     }
 }
