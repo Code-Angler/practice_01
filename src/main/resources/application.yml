@@ -1,7 +1,7 @@
 spring:
 
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
       #Switching
       ddl-auto: create
@@ -20,3 +20,6 @@ spring:
     hikari:
       jdbc-url: jdbc:h2:./testDB;AUTO_SERVER=TRUE
       username: sa
+
+server:
+  port: 8081

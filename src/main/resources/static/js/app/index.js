@@ -73,3 +73,32 @@ var main = {
 };
 
 main.init();
+
+// $(document).ready(function (){
+//     console.log("ITW?")
+//     alert("ITW?")
+// })
+
+function LetsGoToModify(postsId){
+
+
+    if(isLock(postsId)){ // 잠겼다면. 돌아가자구
+        alert("Locked!")
+    }else{
+        window.location.href = '/posts/update/'+postsId;
+    }
+}
+
+function isLock(postsId){
+
+    let is_Lock;
+    $.ajax({
+        type:'GET',
+        url:'/api/v1/posts/isLock/'+postsId,
+        async:false,
+        success: function(response){
+            is_Lock = response.isLock;
+        }
+    })
+    return is_Lock;
+}

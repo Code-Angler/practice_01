@@ -1,6 +1,7 @@
 package com.spring.practice_01.domain.posts;
 
 import com.spring.practice_01.domain.BaseTimeEntity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
+@Setter
 @Getter
 @NoArgsConstructor
 @Entity
@@ -37,46 +39,19 @@ public class Posts extends BaseTimeEntity {
     @Column
     private String author;
 
+    @Column
+    private Boolean lock;
+
+    @Column
+    private Boolean pending;
+
+    @Builder
     public Posts(String title, String content, String author){
         this.title = title;
         this.content = content;
         this.author = author;
-    }
-
-    public static PostsBuilder builder() {
-        return new PostsBuilder();
-    }
-
-    public static class PostsBuilder {
-        private String title;
-        private String content;
-        private String author;
-
-        PostsBuilder() {
-        }
-
-        public PostsBuilder title(String title) {
-            this.title = title;
-            return this;
-        }
-
-        public PostsBuilder content(String content) {
-            this.content = content;
-            return this;
-        }
-
-        public PostsBuilder author(String author) {
-            this.author = author;
-            return this;
-        }
-
-        public Posts build() {
-            return new Posts(title, content, author);
-        }
-
-        public String toString() {
-            return "Posts.PostsBuilder(title=" + this.title + ", content=" + this.content + ", author=" + this.author + ")";
-        }
+        this.lock = false;
+        this.pending = false;
     }
 
     //setter (update)
