@@ -1,7 +1,17 @@
+
 $(document).ready(function (){
+    connect2();
+
     lockManager();
     startTimer();
 })
+
+
+function connect2() {
+    var socket = new SockJS('/gs-guide-websocket');
+    stompClient = Stomp.over(socket);
+}
+
 
 function  startTimer(){
     let interval = setInterval(function imWriting() {
@@ -31,5 +41,6 @@ function lockManager(){
         }
     });
 }
+
 
 

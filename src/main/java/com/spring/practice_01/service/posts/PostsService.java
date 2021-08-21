@@ -114,6 +114,25 @@ public class PostsService {
         }
     }
 
+    public void test2(Long id) throws InterruptedException {
+        System.out.println("LockManager 서비스 시작.");
+        System.out.println("혹시 모르니 LockManager에서도 닫고 출발함.");  // LOCK : FALSE , PENDING : FALSE
+        lockManagerService.transaction1(id); // LOCK : TRUE, PENDING : TRUE;
+        while(true){
+            System.out.println("쓰레드 자러감");
+            Thread.sleep(10000); // 자는동안 ImWriting이 PENDING을 TRUE로 바꿈.
+            System.out.println("쓰레드 일어남");
+            if(lockManagerService.IsAnyOneWriting(id)){ // PENDING이 TRUE인가?
+                System.out.println("누군가 쓰고 있으니, 서버는 다음에 자고 일어나서도 쓰고 있는지 알아보기 위해, 노트를 아무도 안쓰고 있다고 바꿈");
+                lockManagerService.SeemsThatNoBodyIsWriting(id); // PENDING을 FALSE로 바꿈.
+            }else{
+                System.out.println("자고 일어나서도 아직 아무도 안쓰고 있으니 서버가 열어버림");
+                lockManagerService.DeLock(id); // LOCK과 PENDING을 둘다 FALSE로 바꿈.
+                break;
+            }
+        }
+    }
+
     @Async
     public void logger() throws InterruptedException {
         Thread.sleep(5000);
